@@ -2,16 +2,7 @@
 
 namespace Kaysi_Game
 {
-    enum Stats
-    {
-        health, mana, magic, gold, ex, attack, defense, speed
-    }
-
-    class Person
-    {
-        public string name, vocation = "Mortal";
-        public int health, mana, magic, gold, ex = 0, attack, defense, speed;
-    }
+   
 
     class MainClass
     {
@@ -25,7 +16,7 @@ namespace Kaysi_Game
             Console.WriteLine("\n Hello! What is your name?");
             name_input = Console.ReadLine();
 
-            if (name_input == "Kaysi")
+            if (name_input == "Kaysi" || name_input == "kaysi")
             {
                 Console.WriteLine(" \n Hi there sweets!");
             }
@@ -41,6 +32,7 @@ namespace Kaysi_Game
             {
                 case 1:
                     {
+                        player.vocation = "Warrior";
                         player.health = 20;
                         player.attack = 3;
                         player.defense = 3;
@@ -52,6 +44,7 @@ namespace Kaysi_Game
                     }
                 case 2:
                     {
+                        player.vocation = "Mage";
                         player.health = 20;
                         player.attack = 1;
                         player.defense = 3;
@@ -63,6 +56,14 @@ namespace Kaysi_Game
                     }
                 case 3:
                     {
+                        player.vocation = "Theif";
+                        player.health = 20;
+                        player.attack = 2;
+                        player.defense = 2;
+                        player.mana = 20;
+                        player.magic = 2;
+                        player.gold = 60;
+                        player.speed = 3;
                         break;
                     }
                 default:
@@ -70,7 +71,22 @@ namespace Kaysi_Game
                         break;
                     }
             }
+            Console.WriteLine("\n Ahhh, so you're a " + player.vocation + " eh?");
+            
 
         }
+    }
+
+    enum Stats
+    {
+        health, mana, magic, gold, ex, attack, defense, speed
+    }
+
+    class Person
+    {
+        public string name, vocation = "Mortal";
+        public int health, mana, magic, gold, ex = 0, attack, defense, speed, lv = 1;
+
+        public bool levelup() => (ex / lv) > 1000 * lv;
     }
 }
